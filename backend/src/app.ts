@@ -4,6 +4,7 @@ import { errorMiddleware } from "./middlewares/error.js";
 import NodeCache from "node-cache";
 import {config} from "dotenv"
 import morgon from "morgan";
+import Stripe from "stripe";
 
 config({
         path:"./.env"
@@ -12,9 +13,11 @@ config({
 const app = express();
 const port = process.env.PORT || 3000;
 const mongo_uri = process.env.MONGO_URI || "";
+const stripeKey = process.env.STRIPE_KEY || "";
 
 connectDB(mongo_uri);
 
+export const stripe = new Stripe(stripeKey);
 export const myCache = new NodeCache();
 
 app.use(express.json());
