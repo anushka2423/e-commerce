@@ -13,6 +13,6 @@ app.get("/all", adminOnly, getAllUsers);
 // Route - /api/v1/user/dynamicID
 // app.get("/:id", getUser);
 // app.get("/:id", deleteUser);
-app.route("/:id").get(adminOnly, getUser).delete(adminOnly, deleteUser);
+app.route("/:id").get(getUser).delete(adminOnly, deleteUser);
 
 export default app;
